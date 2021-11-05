@@ -1,0 +1,6 @@
+background-color: #262521;
+primary-color: #4FADFF;
+secondary-color: #4BDB4D
+family=Crimson+Text:ital@1&family=Noto+Sans&
+
+font-color on white background : #0C0D0D;
