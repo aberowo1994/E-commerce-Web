@@ -12,7 +12,7 @@
     --secondary-color: #4BDB4D;
     --border-size: 2px;
     --regular-color: #828282;
-
+    --underline-color: rgba(255,255,255,0.3);
 
 }
 
@@ -295,7 +295,7 @@ header {
     text-decoration: none;
     padding: 15px 15px;
     text-align: center;
-    background: rgba(255,255,255,0.3);
+    background: var(--underline-color);
     color: var(--secondary-color);
     border-radius: 400px;
     margin-bottom: 30px;
@@ -340,7 +340,7 @@ header {
     position: absolute;
     width: 250px;
     height: 250px;
-    background: rgba(255,255,255,0.3);
+    background: var(--underline-color);
     left: 0;
     top: 0;
     border-radius: 300px;
@@ -388,13 +388,41 @@ header {
     transform: translate(-100px, 20px);
 }
 
+
+.triangle {
+    position: absolute;
+    height: 0px;
+    width: 0px;
+    right: 15%;
+    top: 100px;
+    /* transform: translateX(100px); */
+    /* background: green; */
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 60px solid var(--underline-color);
+    animation-name: rotate;
+    animation-duration: calc(5s - 600ms);
+    animation-iteration-count:infinite;
+    animation-fill-mode: forwards;
+    z-index: -5;
+}
+
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0) translateX(-10px);
+    }
+    100% {
+        transform: rotate(360deg) translateX(100px);
+    }
+}
 /* styling of section two -------------------------------------------------------*/
 
 .section--2 {
     /* border: 2px solid; */
     width: 100%;
     /* height: 100%; */
-    padding: 50px 30px 0px 30px;
+    padding: 80px 30px 0px 30px;
     /* display: flex;
     align-items: center;
     justify-content: center;
@@ -449,12 +477,15 @@ header {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: auto;
-    row-gap: 30px;
+    column-gap: 20px;
+    row-gap: 50px;
     place-items: center;
 }
 
 .product--log {
+    position: relative;
     /* border: 2px solid green; */
+    margin-top: 30px;
     padding: 30px 20px 10px 20px;
     height: 500px;
     width: 350px;
@@ -464,7 +495,7 @@ header {
     0px 10px 5px 0px rgba(0, 0, 0,0.1),
     0px -10px 2px 0px rgba(0, 0, 0,0.1);
     border-radius: 0px 0px 20px 0px;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .image--product{
@@ -473,7 +504,11 @@ header {
     width: 100%;
     border-radius: 0px 0px 20%/10px 0;
     /* border: 1px solid; */
-    overflow: hidden
+    overflow: hidden;
+    transition: transform 500ms ease-out;
+}
+.image--product:hover {
+    transform: scale(1.05) translateY(-10px);
 }
 
 .image--product img {
@@ -488,6 +523,8 @@ header {
     /* border: 2px solid; */
     cursor:crosshair;
 }
+
+
 .name--rating {
     /* border: 2px solid; */
     margin-top: 10px;
@@ -622,3 +659,40 @@ header {
     font-size: 1.5em;
 }
 
+.sales--tag {
+    position: absolute;
+    background:var(--primary-color);
+    padding: 10px 30px;
+    top: 5px;
+    right: 0;
+    text-align: center;
+    perspective: 800px;
+    perspective-origin: bottom right;
+    transform: rotate(-20deg) translate(5px, 5px);
+    z-index: 1;
+}
+
+.sales--tag::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    background: var(--primary-color);
+    /* background:green; */
+    height: 100%;
+    /* display: block; */
+    /* border: 2px solid red; */
+    top: 0;
+    /* left: 0; */
+    bottom: 0;
+    right: 0;
+    transform: translateX(9px);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 15px;
+
+}
+
+.sales--tag span {
+    font-size: 1.4em;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
